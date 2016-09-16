@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Lukes Build</title>
+
+    <script type="text/javascript" src="/vendors/angular.min.js"></script>
+    <script type="text/javascript" src="/scripts/client.js"></script>
+  </head>
+  <body ng-controller="BasicController">
+    <p>
+      {{message}}
+    </p>
+    <div ng-repeat="lizard in lizardData">
+      <div>
+        <p>
+          {{lizard.name}} {{lizard.color}} {{lizard.size}}
+        </p>
+        <button ng-click="deleteLizard(lizard)">Delete</button>
+      </div>
+
+    </div>
+
+
+    <h2>Lizard Stats</h2>
+    <input ng-model="name" type="text" placeholder="Lizard Name"/>
+    <input ng-model="color" type="text" placeholder="Lizard Color"/>
+    <input ng-model="size" type="text" placeholder="Lizard Size"/>
+    <button ng-click="postLizard()">
+      Submit Lizard
+    </button>
+  </body>
+</html>
