@@ -5,8 +5,11 @@ var index = require('./routes/index');
 var bodyParser = require('body-parser');
 
 var db = mongoose.connect("mongodb://localhost/luke_build", function(err){
-  if(err) console.log(err);
-  console.log("Database connected!");
+  if(err) {
+    console.log(err);
+  } else {
+    console.log("Database connected!");
+  }
 });
 
 app.set("port", 5000);
