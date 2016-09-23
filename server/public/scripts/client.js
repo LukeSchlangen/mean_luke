@@ -7,7 +7,7 @@ myApp.controller("BasicController", ["$scope", "$http", function($scope, $http){
     $scope.deleteLizard = function(lizard){
       console.log("DELETING", lizard);
       $http.delete("/lizards/" + lizard._id).then(function(response){
-          $scope.getLizard();
+          $scope.getLizards();
       });
     };
 
@@ -18,15 +18,22 @@ myApp.controller("BasicController", ["$scope", "$http", function($scope, $http){
         size: $scope.size
       };
       $http.post("/lizards/add", data).then(function(response){
-        $scope.getLizard();
+        $scope.getLizards();
       });
     };
 
-    $scope.getLizard = function(){
+    $scope.getLizards = function(){
       $http.get("/lizards").then(function(response){
         $scope.lizardData = response.data;
       });
     };
 
-    $scope.getLizard();
+    $scope.getLizard = function(lizard){
+      console.log("Getting", lizard);
+      $http.get("/lizards/" + lizard._id).then(function(response){
+        $scope.lizardData = response.data;
+      });
+    };
+
+    $scope.getLizards();
 }]);

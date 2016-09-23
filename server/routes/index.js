@@ -10,6 +10,16 @@ router.get("/lizards", function(req,res){
     });
 });
 
+router.get("/lizards/:id", function(req,res){
+    LizardSchema.findById(req.params.id, function(err,data){
+      if(err) {
+        console.log(err);
+      } else {
+        res.send(data);
+      }
+    });
+});
+
 router.post("/lizards/add", function(req,res){
     var lizard = new LizardSchema({
       name: req.body.name,
